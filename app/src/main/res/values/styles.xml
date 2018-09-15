@@ -1,0 +1,30 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="BaseText">
+    </style>
+
+    <style name="label.regular" parent="BaseText">
+        <item name="android:textSize">@dimen/text_size_x_small</item>
+    </style>
+
+    <style name="label.bold" parent="BaseText">
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="toolbarTitle" parent="label.regular">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">@dimen/text_size_x_large</item>
+    </style>
+
+
+
+
+</resources>
