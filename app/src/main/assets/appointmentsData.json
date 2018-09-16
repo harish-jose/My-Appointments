@@ -1,0 +1,357 @@
+{  
+   "Sessions":[  
+      {  
+         "AppointmentId":100000164488587,
+         "ActivityStartDate":"2017-02-15T15:00:00-08:00",
+         "ActivityEndDate":"2017-02-15T18:00:00-08:00",
+         "Subject":"Meeting with Executive Management Team",
+         "ActivityType":"Meeting",
+         "Location":"Oracle HQ, Redwood Shores",
+         "Owner":"Michael Caliman",
+         "OwnerEmail":"michael.caliman@gmail.com",
+         "OwnerContactNumber":"+915644632896",
+         "PrimaryContactName":"Steve Murray",
+         "LeadName":"Server Tech Lead",
+         "AccountName":"Vision Corporation",
+         "OpportunityName":"Server Tech Upgrade Opportunity",
+         "Description":"Tempora mutantur et nos mutamur in illis.",
+         "invitees":[  
+            {  
+               "id":11,
+               "name":"Steve Murray",
+               "email":"steve.murray@gmail.com",
+               "phoneNumber":"+919426350000",
+               "jobTitle":"Senior Manager"
+            },
+            {  
+               "id":12,
+               "name":"Sharon Will",
+               "email":"sharon.will@gmail.com",
+               "phoneNumber":"+915636480000",
+               "jobTitle":"Project Manager"
+            },
+            {  
+               "id":13,
+               "name":"John Smith",
+               "email":"john.smith@gmail.com",
+               "phoneNumber":"+915678420000",
+               "jobTitle":"Director"
+            }
+         ]
+      },
+      {  
+         "AppointmentId":100000164488588,
+         "ActivityStartDate":"2017-01-28T15:00:00-08:00",
+         "ActivityEndDate":"2017-01-28T16:30:00-08:00",
+         "Subject":"Meeting with Executive Management Team",
+         "ActivityType":"Meeting",
+         "Location":"Oracle HQ, Redwood Shores",
+         "Owner":"Joshua Baker",
+         "OwnerEmail":"joshua.baker@gmail.com",
+         "OwnerContactNumber":"+912344632890",
+         "PrimaryContactName":"John Lopez",
+         "LeadName":"RMS Tech Lead",
+         "AccountName":"RMS Corporation",
+         "OpportunityName":"RMS Server Upgrade Opportunity",
+         "invitees":[  
+            {  
+               "id":10,
+               "name":"Brett Lee",
+               "email":"brett.lee@gmail.com",
+               "phoneNumber":"+919296042000",
+               "jobTitle":"Senior Project Manager"
+            },
+            {  
+               "id":13,
+               "name":"John Smith",
+               "email":"john.smith@gmail.com",
+               "phoneNumber":"+915678420000",
+               "jobTitle":"Director"
+            },
+            {  
+               "id":14,
+               "name":"Jacob Evans",
+               "email":"jacob.evans@gmail.com",
+               "phoneNumber":"+914635670000",
+               "jobTitle":"Vice President"
+            }
+         ]
+      },
+      {  
+         "AppointmentId":100000164488589,
+         "ActivityStartDate":"2017-01-05T17:00:00+05:30",
+         "ActivityEndDate":"2017-01-05T17:30:00+05:30",
+         "Subject":"Meeting with Executive Management Team",
+         "ActivityType":"Meeting",
+         "Location":"Oracle HQ, Redwood Shores",
+         "Owner":"Joshua Baker",
+         "OwnerEmail":"joshua.baker@gmail.com",
+         "OwnerContactNumber":"+912356632845",
+         "PrimaryContactName":"Roger Finn",
+         "LeadName":"Server Tech Lead",
+         "AccountName":"Vision Corporation",
+         "OpportunityName":"Server Tech Decommission Opportunity",
+         "invitees":[  
+            {  
+               "id":11,
+               "name":"Steve Murray",
+               "email":"steve.murray@gmail.com",
+               "phoneNumber":"+919426350000",
+               "jobTitle":"Senior Manager"
+            },
+            {  
+               "id":12,
+               "name":"Sharon Will",
+               "email":"sharon.will@gmail.com",
+               "phoneNumber":"+915636480000",
+               "jobTitle":"Project Manager"
+            }
+         ]
+      },
+      {  
+         "AppointmentId":100000164488590,
+         "ActivityStartDate":"2017-12-19T15:00:00-08:00",
+         "ActivityEndDate":"2017-12-19T16:00:00-08:00",
+         "Subject":"Meeting with Executive Management Team",
+         "ActivityType":"Meeting",
+         "Location":"Oracle HQ, Redwood Shores",
+         "Owner":"Joshua Baker",
+         "OwnerEmail":"joshua.baker@gmail.com",
+         "OwnerContactNumber":"+912344632890",
+         "PrimaryContactName":"Steve Murray",
+         "LeadName":"Server Tech Lead",
+         "AccountName":"Vision Corporation",
+         "OpportunityName":"Server Tech Upgrade Opportunity",
+         "invitees":[  
+            {  
+               "id":10,
+               "name":"Brett Lee",
+               "email":"brett.lee@gmail.com",
+               "phoneNumber":"+919296042000",
+               "jobTitle":"Senior Project Manager"
+            },
+            {  
+               "id":14,
+               "name":"Jacob Evans",
+               "email":"jacob.evans@gmail.com",
+               "phoneNumber":"+914635670000",
+               "jobTitle":"Vice President"
+            }
+         ]
+      },
+      {  
+         "AppointmentId":100000164488591,
+         "ActivityStartDate":"2017-02-17T15:00:00-08:00",
+         "ActivityEndDate":"2017-02-17T17:00:00-08:00",
+         "Subject":"Meeting with Executive Management Team",
+         "ActivityType":"Meeting",
+         "Location":"Oracle HQ, Redwood Shores",
+         "Owner":"Joshua Baker",
+         "OwnerEmail":"joshua.baker@gmail.com",
+         "OwnerContactNumber":"+912344632890",
+         "PrimaryContactName":"Steve Murray",
+         "LeadName":"Server Tech Lead",
+         "AccountName":"Vision Corporation",
+         "OpportunityName":"Server Tech Upgrade Opportunity",
+         "invitees":[  
+            {  
+               "id":13,
+               "name":"John Smith",
+               "email":"john.smith@gmail.com",
+               "phoneNumber":"+915678420000",
+               "jobTitle":"Director"
+            },
+            {  
+               "id":14,
+               "name":"Jacob Evans",
+               "email":"jacob.evans@gmail.com",
+               "phoneNumber":"+914635670000",
+               "jobTitle":"Vice President"
+            }
+         ]
+      },
+      {  
+         "AppointmentId":100000164488592,
+         "ActivityStartDate":"2017-01-13T05:00:00-08:00",
+         "ActivityEndDate":"2017-01-13T07:00:00-08:00",
+         "Subject":"Meeting with Executive Management Team",
+         "ActivityType":"Meeting",
+         "Location":"Oracle HQ, Redwood Shores",
+         "Owner":"Joshua Baker",
+         "OwnerEmail":"joshua.baker@gmail.com",
+         "OwnerContactNumber":"+912344632890",
+         "PrimaryContactName":"Steve Murray",
+         "LeadName":"Server Tech Lead",
+         "AccountName":"Vision Corporation",
+         "OpportunityName":"Server Tech Upgrade Opportunity",
+         "invitees":[  
+            {  
+               "id":10,
+               "name":"Brett Lee",
+               "email":"brett.lee@gmail.com",
+               "phoneNumber":"+919296042000",
+               "jobTitle":"Senior Project Manager"
+            },
+            {  
+               "id":11,
+               "name":"Steve Murray",
+               "email":"steve.murray@gmail.com",
+               "phoneNumber":"+919426350000",
+               "jobTitle":"Senior Manager"
+            },
+            {  
+               "id":12,
+               "name":"Sharon Will",
+               "email":"sharon.will@gmail.com",
+               "phoneNumber":"+915636480000",
+               "jobTitle":"Project Manager"
+            }
+         ]
+      },
+      {  
+         "AppointmentId":100000164488593,
+         "ActivityStartDate":"2017-01-16T06:00:00-08:00",
+         "ActivityEndDate":"2017-01-16T07:00:00-08:00",
+         "Subject":"Meeting with Executive Management Team",
+         "ActivityType":"Meeting",
+         "Location":"Oracle HQ, Redwood Shores",
+         "Owner":"Joshua Baker",
+         "OwnerEmail":"joshua.baker@gmail.com",
+         "OwnerContactNumber":"+912344632890",
+         "PrimaryContactName":"Steve Murray",
+         "LeadName":"Server Tech Lead",
+         "AccountName":"Vision Corporation",
+         "OpportunityName":"Server Tech Upgrade Opportunity",
+         "invitees":[  
+            {  
+               "id":10,
+               "name":"Brett Lee",
+               "email":"brett.lee@gmail.com",
+               "phoneNumber":"+919296042000",
+               "jobTitle":"Senior Project Manager"
+            },
+            {  
+               "id":14,
+               "name":"Jacob Evans",
+               "email":"jacob.evans@gmail.com",
+               "phoneNumber":"+914635670000",
+               "jobTitle":"Vice President"
+            }
+         ]
+      },
+      {  
+         "AppointmentId":100000164488594,
+         "ActivityStartDate":"2017-01-15T13:00:00-08:00",
+         "ActivityEndDate":"2017-01-15T14:00:00-08:00",
+         "Subject":"Meeting with Executive Management Team",
+         "ActivityType":"Meeting",
+         "Location":"Oracle HQ, Redwood Shores",
+         "Owner":"Mitchel Walsh",
+         "OwnerEmail":"Mitchel.Walsh@gmail.com",
+         "OwnerContactNumber":"+912356632590",
+         "PrimaryContactName":"Delivin Murray",
+         "LeadName":"Lead Tech",
+         "AccountName":"Intel Corporation",
+         "OpportunityName":"Chipset Tech Upgrade",
+         "invitees":[  
+            {  
+               "id":10,
+               "name":"Brett Lee",
+               "email":"brett.lee@gmail.com",
+               "phoneNumber":"+919296042000",
+               "jobTitle":"Senior Project Manager"
+            },
+            {  
+               "id":11,
+               "name":"Steve Murray",
+               "email":"steve.murray@gmail.com",
+               "phoneNumber":"+919426350000",
+               "jobTitle":"Senior Manager"
+            }
+         ]
+      },
+      {  
+         "AppointmentId":100000164488595,
+         "ActivityStartDate":"2017-02-21T11:00:00-08:00",
+         "ActivityEndDate":"2017-02-21T17:12:00-08:00",
+         "Subject":"Meeting with Executive Management Team",
+         "ActivityType":"Meeting",
+         "Location":"Oracle HQ, Redwood Shores",
+         "Owner":"Julia Lee",
+         "OwnerEmail":"julia.lee@gmail.com",
+         "OwnerContactNumber":"+914344632492",
+         "PrimaryContactName":"Steve Murray",
+         "LeadName":"Server Tech Lead",
+         "AccountName":"Vision Corporation",
+         "OpportunityName":"Server Tech Upgrade Opportunity",
+         "invitees":[  
+            {  
+               "id":13,
+               "name":"John Smith",
+               "email":"john.smith@gmail.com",
+               "phoneNumber":"+915678420000",
+               "jobTitle":"Director"
+            },
+            {  
+               "id":14,
+               "name":"Jacob Evans",
+               "email":"jacob.evans@gmail.com",
+               "phoneNumber":"+914635670000",
+               "jobTitle":"Vice President"
+            }
+         ]
+      },
+      {  
+         "AppointmentId":100000164488596,
+         "ActivityStartDate":"2017-12-18T10:00:00-08:00",
+         "ActivityEndDate":"2017-12-18T12:00:00-08:00",
+         "Subject":"Meeting with Executive Management Team",
+         "ActivityType":"Meeting",
+         "Location":"Oracle HQ, Redwood Shores",
+         "Owner":"Julia Lee",
+         "OwnerEmail":"julia.lee@gmail.com",
+         "OwnerContactNumber":"+914344632492",
+         "PrimaryContactName":"Steve Jobs",
+         "LeadName":"Apple Walk in",
+         "AccountName":"Apple Corporation",
+         "OpportunityName":"Apple Inc Opportunity",
+         "invitees":[  
+            {  
+               "id":10,
+               "name":"Brett Lee",
+               "email":"brett.lee@gmail.com",
+               "phoneNumber":"+919296042000",
+               "jobTitle":"Senior Project Manager"
+            },
+            {  
+               "id":11,
+               "name":"Steve Murray",
+               "email":"steve.murray@gmail.com",
+               "phoneNumber":"+919426350000",
+               "jobTitle":"Senior Manager"
+            },
+            {  
+               "id":12,
+               "name":"Sharon Will",
+               "email":"sharon.will@gmail.com",
+               "phoneNumber":"+915636480000",
+               "jobTitle":"Project Manager"
+            },
+            {  
+               "id":13,
+               "name":"John Smith",
+               "email":"john.smith@gmail.com",
+               "phoneNumber":"+915678420000",
+               "jobTitle":"Director"
+            },
+            {  
+               "id":14,
+               "name":"Jacob Evans",
+               "email":"jacob.evans@gmail.com",
+               "phoneNumber":"+914635670000",
+               "jobTitle":"Vice President"
+            }
+         ]
+      }
+   ]
+}

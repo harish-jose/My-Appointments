@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">My Appointments</string>
+
+    <string name="error_reading_data_from_file">Unable to read appointments.</string>
 </resources>

@@ -1,25 +1,42 @@
 package com.harishjose.myappointments.models;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.ArrayList;
 
 /**
  * Created by harish.jose on 15-09-2018.
  */
 public class Appointment {
+    @SerializedName("AppointmentId")
     private long appointmentId;
+    @SerializedName("ActivityStartDate")
     private String activityStartDate;
+    @SerializedName("ActivityEndDate")
     private String activityEndDate;
+    @SerializedName("Subject")
     private String subject;
+    @SerializedName("ActivityType")
     private String activityType;
+    @SerializedName("Location")
     private String location;
+    @SerializedName("Owner")
     private String owner;
+    @SerializedName("OwnerEmail")
     private String ownerEmail;
+    @SerializedName("OwnerContactNumber")
     private String ownerContactNumber;
+    @SerializedName("PrimaryContactName")
     private String primaryContactName;
+    @SerializedName("LeadName")
     private String leadName;
+    @SerializedName("AccountName")
     private String accountName;
+    @SerializedName("OpportunityName")
     private String opportunityName;
+    @SerializedName("Description")
     private String description;
+    @SerializedName("invitees")
     private ArrayList<Contact> invitees;
 
     public long getAppointmentId() {

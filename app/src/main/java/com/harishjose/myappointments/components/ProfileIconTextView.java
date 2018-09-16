@@ -31,6 +31,7 @@ public class ProfileIconTextView extends AppCompatTextView {
 
     private void init(Context context) {
         setBackground(GeneralUtil.getDrawable(context, R.drawable.profile_icon_circle));
+        setTextColor(context.getResources().getColor(R.color.dark_grey));
         setTextSize(18);
         setTypeface(getTypeface(), Typeface.BOLD);
         setGravity(Gravity.CENTER);

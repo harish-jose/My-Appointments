@@ -1,10 +1,12 @@
 package com.harishjose.myappointments.screens;
 
+import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 
 import com.harishjose.myappointments.R;
 import com.harishjose.myappointments.constants.FragmentTags;
+import com.harishjose.myappointments.databinding.ActivityMainBinding;
 import com.harishjose.myappointments.screens.appointmentDetail.AppointmentDetailsFragment;
 import com.harishjose.myappointments.screens.appointmentList.AppointmentListFragment;
 import com.harishjose.myappointments.screens.common.BaseActivity;
@@ -12,16 +14,18 @@ import com.harishjose.myappointments.utils.FragmentNavigationManager;
 
 public class MainActivity extends BaseActivity {
 
+    private ActivityMainBinding binding;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
         doInit();
     }
 
     @Override
     protected void doInit() {
-
+        loadFragment(FragmentTags.APPOINTMENTS_LIST_FRAGMENT, null);
     }
 
     /**

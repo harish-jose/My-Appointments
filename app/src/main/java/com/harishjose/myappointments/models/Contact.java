@@ -1,13 +1,20 @@
 package com.harishjose.myappointments.models;
 
+import com.google.gson.annotations.SerializedName;
+
 /**
  * Created by harish.jose on 15-09-2018.
  */
 public class Contact {
+    @SerializedName("id")
     private int id;
+    @SerializedName("name")
     private String name;
+    @SerializedName("email")
     private String email;
+    @SerializedName("phoneNumber")
     private String phoneNumber;
+    @SerializedName("jobTitle")
     private String jobTitle;
 
     public int getId() {

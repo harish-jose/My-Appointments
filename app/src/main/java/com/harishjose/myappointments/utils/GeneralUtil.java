@@ -15,7 +15,15 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.harishjose.myappointments.constants.AppConstants;
 import com.harishjose.myappointments.controller.MyAppointmentsApplication;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 
 /**
  * Created by harish.jose on 14-09-18.
@@ -23,6 +31,7 @@ import com.harishjose.myappointments.controller.MyAppointmentsApplication;
  */
 public final class GeneralUtil {
 
+    private static SimpleDateFormat serverDateFormat = new SimpleDateFormat(AppConstants.DATETIMEFORMAT);
     /**
      * The screen tag.
      */
@@ -34,8 +43,8 @@ public final class GeneralUtil {
      * @param resourceId the resource id
      * @return the string
      */
-    public static String getString(Context context,int resourceId) {
-        return context.getResources().getString(resourceId);
+    public static String getString(int resourceId) {
+        return MyAppointmentsApplication.getInstance().getResources().getString(resourceId);
     }
 
     /**
@@ -50,7 +59,7 @@ public final class GeneralUtil {
      * @param messageResourceId the message resource Id
      */
     public static void showShortToast(Context context,int messageResourceId) {
-        Toast.makeText(context, getString(context,messageResourceId), Toast.LENGTH_SHORT).show();
+        Toast.makeText(context, getString(messageResourceId), Toast.LENGTH_SHORT).show();
     }
 
     /**
@@ -65,7 +74,7 @@ public final class GeneralUtil {
      * @param messageResourceId the message resource Id
      */
     public static void showLongToast(Context context,int messageResourceId) {
-        Toast.makeText(context, getString(context,messageResourceId), Toast.LENGTH_LONG).show();
+        Toast.makeText(context, getString(messageResourceId), Toast.LENGTH_LONG).show();
     }
 
     /**
@@ -214,6 +223,60 @@ public final class GeneralUtil {
                 (Context.CONNECTIVITY_SERVICE);
         NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
         return activeNetworkInfo != null && activeNetworkInfo.isConnected();
+    }
+
+    /**
+     * To read data from file in assets folder
+     * @return
+     */
+    public static String loadJSONFromAsset(String filename) {
+        String json = null;
+        try {
+            InputStream is = MyAppointmentsApplication.getInstance().getAssets().open(filename);
+            int size = is.available();
+            byte[] buffer = new byte[size];
+            is.read(buffer);
+            is.close();
+            json = new String(buffer, "UTF-8");
+        } catch (IOException ex) {
+            ex.printStackTrace();
+            return null;
+        }
+        return json;
+    }
+
+    public static Calendar parseDateTime(String dateTime) {
+        Calendar calendar = Calendar.getInstance();
+        try {
+            calendar.setTime(serverDateFormat.parse(dateTime));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return calendar;
+    }
+
+    public static String formatDateTime(String dateTime, String reqFormat) {
+        SimpleDateFormat reqSdf = new SimpleDateFormat(reqFormat);
+        try {
+            return reqSdf.format(serverDateFormat.parse(dateTime));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return "";
+    }
+
+    public static boolean checkForSameDay(String dateTime1, String dateTime2) {
+        try {
+            Date date1 = serverDateFormat.parse(dateTime1);
+            Date date2 = serverDateFormat.parse(dateTime2);
+
+            if(date1.getDate() == date2.getDate() && date1.getMonth() == date2.getMonth() && date1.getYear() == date2.getYear()) {
+                return true;
+            }
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return false;
     }
 
 }
