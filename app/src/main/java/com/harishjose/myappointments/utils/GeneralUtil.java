@@ -9,6 +9,7 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Build;
+import android.text.format.DateUtils;
 import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -109,11 +110,11 @@ public final class GeneralUtil {
      * @param colorResourceId the color resource id
      * @return the color
      */
-    public static int getColor(Context context,int colorResourceId) {
+    public static int getColor(int colorResourceId) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            return context.getResources().getColor(colorResourceId, null);
+            return MyAppointmentsApplication.getInstance().getResources().getColor(colorResourceId, null);
         }
-        return context.getResources().getColor(colorResourceId);
+        return MyAppointmentsApplication.getInstance().getResources().getColor(colorResourceId);
     }
 
     /**
@@ -225,6 +226,18 @@ public final class GeneralUtil {
         return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
 
+    public static String getInitials(String fullName) {
+        String[] names = fullName.split(" ", 2);
+        String initials = "";
+        try {
+            initials += names[0].charAt(0);
+            initials += names[1].charAt(0);
+        } catch (Exception e) {
+
+        }
+        return initials;
+    }
+
     /**
      * To read data from file in assets folder
      * @return
@@ -245,7 +258,7 @@ public final class GeneralUtil {
         return json;
     }
 
-    public static Calendar parseDateTime(String dateTime) {
+    public static Calendar parseDateTimeToCalendar(String dateTime) {
         Calendar calendar = Calendar.getInstance();
         try {
             calendar.setTime(serverDateFormat.parse(dateTime));
@@ -255,11 +268,30 @@ public final class GeneralUtil {
         return calendar;
     }
 
+    public static Date parseDateTimeToDate(String dateTime) {
+        try {
+            return serverDateFormat.parse(dateTime);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
     public static String formatDateTime(String dateTime, String reqFormat) {
         SimpleDateFormat reqSdf = new SimpleDateFormat(reqFormat);
         try {
             return reqSdf.format(serverDateFormat.parse(dateTime));
         } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return "";
+    }
+
+    public static String formatDateTime(Date dateTime, String reqFormat) {
+        SimpleDateFormat reqSdf = new SimpleDateFormat(reqFormat);
+        try {
+            return reqSdf.format(dateTime);
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return "";
@@ -277,6 +309,24 @@ public final class GeneralUtil {
             e.printStackTrace();
         }
         return false;
+    }
+
+    public static boolean isTomorrow(long milliSeconds) {
+        return DateUtils.isToday(milliSeconds - DateUtils.DAY_IN_MILLIS);
+    }
+
+    public static boolean isToday(long milliSeconds) {
+        return DateUtils.isToday(milliSeconds);
+    }
+
+    public static boolean isTimeSlotNow(Date startDate, Date endDate) {
+        Date now = new Date();
+        return now.after(startDate) && now.before(endDate);
+    }
+
+    public static boolean isUpcomingTime(Date startDate) {
+        Date now = new Date();
+        return startDate.after(now);
     }
 
 }

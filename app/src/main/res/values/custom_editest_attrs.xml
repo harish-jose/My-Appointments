@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="Custom_EditText_Options">
+        <attr name="field_input_type" format="integer">
+            <enum name="textCapSentence" value="0" />
+            <enum name="textCapWords" value="1" />
+        </attr>
+        <attr name="field_hint" format="string"/>
+        <attr name="field_text" format="string"/>
+        <attr name="field_required" format="boolean"/>
+        <attr name="field_max_length" format="integer"/>
+        <attr name="field_ime_option" format="integer">
+            <enum name="done" value="0" />
+            <enum name="forward" value="1" />
+        </attr>
+        <attr name="filed_next" format="reference"/>
+        <attr name="enabled" format="boolean"/>
+    </declare-styleable>
+</resources>

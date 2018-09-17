@@ -6,7 +6,8 @@ package com.harishjose.myappointments.constants;
 
 public enum FragmentTags {
     APPOINTMENTS_LIST_FRAGMENT("AppointmentsListFragment"),
-    AAPPOINTMENT_DETAILS_FRAGMENT("AppointmentDetailsFragment");
+    ADD_INVITEE_FRAGMENT("AddInviteeFragment"),
+    APPOINTMENT_DETAILS_FRAGMENT("AppointmentDetailsFragment");
 
     private final String text;
 

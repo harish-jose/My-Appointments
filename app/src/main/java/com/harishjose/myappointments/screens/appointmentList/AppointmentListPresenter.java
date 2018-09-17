@@ -5,8 +5,11 @@ import com.harishjose.myappointments.callbacks.DataCallback;
 import com.harishjose.myappointments.models.Appointment;
 import com.harishjose.myappointments.services.AppointmentService;
 import com.harishjose.myappointments.services.AppointmentServiceImpl;
+import com.harishjose.myappointments.utils.GeneralUtil;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 /**
  * Created by harish.jose on 14-09-2018.
@@ -36,6 +39,12 @@ public class AppointmentListPresenter implements AppointmentListContract.Appoint
             @Override
             public void onSuccess(ArrayList<Appointment> successResponse) {
                 if(mView != null) {
+                    Collections.sort(successResponse, new Comparator<Appointment>() {
+                        @Override
+                        public int compare(Appointment o1, Appointment o2) {
+                            return GeneralUtil.parseDateTimeToDate(o1.getActivityStartDate()).compareTo(GeneralUtil.parseDateTimeToDate(o2.getActivityStartDate()));
+                        }
+                    });
                     mView.setAppointmentList(successResponse);
                 }
             }

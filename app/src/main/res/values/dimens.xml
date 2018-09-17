@@ -3,7 +3,11 @@
     <dimen name="two_dp">2dp</dimen>
     <dimen name="five_dp">5dp</dimen>
     <dimen name="ten_dp">10dp</dimen>
+    <dimen name="twenty_dp">20dp</dimen>
+    <dimen name="fifty_dp">50dp</dimen>
     <dimen name="item_detail_peek_height">150dp</dimen>
+    <dimen name="error_icon_width">20dp</dimen>
+    <dimen name="error_icon_height">20dp</dimen>
 
     <dimen name="padding_small">10dp</dimen>
     <dimen name="padding_medium">15dp</dimen>

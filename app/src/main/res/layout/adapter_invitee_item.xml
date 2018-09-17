@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <RelativeLayout
+        android:id="@+id/lyt_invitee_info"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/padding_small">
+        <com.harishjose.myappointments.components.ProfileIconTextView
+            android:id="@+id/profile_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/dark_grey"
+            android:transitionName="profile_transition"
+            android:textColor="@color/white"
+            android:textAllCaps="true"
+            android:text=""/>
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/profile_icon"
+            android:layout_alignBottom="@+id/profile_icon"
+            android:layout_marginStart="@dimen/padding_small"
+            android:gravity="center"
+            android:layout_toEndOf="@+id/profile_icon"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/tv_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:includeFontPadding="false"
+                android:textSize="@dimen/text_size_medium"
+                android:textColor="@color/dark_grey"
+                android:textStyle="bold"
+                android:text=""/>
+            <TextView
+                android:id="@+id/tv_designation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_name"
+                android:includeFontPadding="false"
+                android:textColor="@color/secondaryText"
+                android:textSize="@dimen/text_size_x_small"
+                android:text=""/>
+        </RelativeLayout>
+
+        <ImageButton
+            android:id="@+id/btn_remove"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:scaleType="fitXY"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/ic_cancel"
+            android:background="@color/white"/>
+
+    </RelativeLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginStart="@dimen/ten_dp"
+        android:layout_below="@+id/lyt_invitee_info"
+        android:background="@color/dividerColor"/>
+</RelativeLayout>
+

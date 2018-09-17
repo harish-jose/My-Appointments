@@ -2,10 +2,12 @@ package com.harishjose.myappointments.models;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
+
 /**
  * Created by harish.jose on 15-09-2018.
  */
-public class Contact {
+public class Contact implements Serializable{
     @SerializedName("id")
     private int id;
     @SerializedName("name")

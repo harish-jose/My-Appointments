@@ -1,0 +1,39 @@
+{
+   "invitees": [
+      {
+         "id": 10,
+         "name": "Brett Lee",
+         "email": "brett.lee@gmail.com",
+         "phoneNumber": "+919296042000",
+         "jobTitle": "Senior Project Manager"
+      },
+      {
+         "id": 11,
+         "name": "Steve Murray",
+         "email": "steve.murray@gmail.com",
+         "phoneNumber": "+919426350000",
+         "jobTitle": "Senior Manager"
+      },
+      {
+         "id": 12,
+         "name": "Sharon Will",
+         "email": "sharon.will@gmail.com",
+         "phoneNumber": "+915636480000",
+         "jobTitle": "Project Manager"
+      },
+      {
+         "id": 13,
+         "name": "John Smith",
+         "email": "john.smith@gmail.com",
+         "phoneNumber": "+915678420000",
+         "jobTitle": "Director"
+      },
+      {
+         "id": 14,
+         "name": "Jacob Evans",
+         "email": "jacob.evans@gmail.com",
+         "phoneNumber": "+914635670000",
+         "jobTitle": "Vice President"
+      }
+   ]
+}

@@ -2,12 +2,13 @@ package com.harishjose.myappointments.models;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  * Created by harish.jose on 15-09-2018.
  */
-public class Appointment {
+public class Appointment implements Serializable{
     @SerializedName("AppointmentId")
     private long appointmentId;
     @SerializedName("ActivityStartDate")
@@ -38,6 +39,8 @@ public class Appointment {
     private String description;
     @SerializedName("invitees")
     private ArrayList<Contact> invitees;
+
+    private boolean isSelected;
 
     public long getAppointmentId() {
         return appointmentId;
@@ -157,5 +160,13 @@ public class Appointment {
 
     public void setInvitees(ArrayList<Contact> invitees) {
         this.invitees = invitees;
+    }
+
+    public boolean isSelected() {
+        return isSelected;
+    }
+
+    public void setSelected(boolean selected) {
+        isSelected = selected;
     }
 }

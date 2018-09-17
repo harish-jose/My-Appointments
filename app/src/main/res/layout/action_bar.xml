@@ -1,36 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:background="@color/colorPrimary"
-    android:layout_height="?android:attr/actionBarSize">
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:background="@color/colorPrimary"
+        android:layout_height="?android:attr/actionBarSize">
 
-    <ImageView
-        android:id="@+id/btn_home"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:visibility="invisible"
-        android:foreground="?attr/selectableItemBackground"
-        android:paddingStart="@dimen/padding_small"
-        android:paddingEnd="@dimen/padding_small"
-        android:src="@drawable/ic_arrow_back"/>
-    <TextView
-        android:id="@+id/tv_toolbar_title"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:singleLine="true"
-        android:gravity="center_vertical"
-        android:layout_toEndOf="@+id/btn_home"
-        android:layout_toStartOf="@+id/btn_action"
-        android:text=""
-        style="@style/toolbarTitle"/>
+        <ImageView
+            android:id="@+id/btn_home"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:visibility="invisible"
+            android:foreground="?attr/selectableItemBackground"
+            android:paddingStart="@dimen/padding_small"
+            android:paddingEnd="@dimen/padding_small"
+            android:src="@drawable/ic_arrow_back"/>
+        <TextView
+            android:id="@+id/tv_toolbar_title"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:singleLine="true"
+            android:gravity="center"
+            android:layout_toEndOf="@+id/btn_home"
+            android:layout_toStartOf="@+id/btn_action"
+            android:text=""
+            style="@style/toolbarTitle"/>
 
-    <ImageView
-        android:id="@+id/btn_action"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:visibility="gone"
-        android:layout_alignParentEnd="true"
-        android:paddingStart="@dimen/padding_small"
-        android:paddingEnd="@dimen/padding_small"/>
-</RelativeLayout>
+        <ImageView
+            android:id="@+id/btn_action"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:visibility="invisible"
+            android:src="@drawable/ic_edit"
+            android:layout_alignParentEnd="true"
+            android:paddingStart="@dimen/padding_small"
+            android:paddingEnd="@dimen/padding_small"/>
+    </RelativeLayout>
+</layout>

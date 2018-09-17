@@ -16,23 +16,23 @@ import com.harishjose.myappointments.utils.GeneralUtil;
 public class ProfileIconTextView extends AppCompatTextView {
     public ProfileIconTextView(Context context) {
         super(context);
-        init(context);
+        init(context, null);
     }
 
     public ProfileIconTextView(Context context, AttributeSet attrs) {
         super(context, attrs);
-        init(context);
+        init(context, attrs);
     }
 
     public ProfileIconTextView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        init(context);
+        init(context, attrs);
     }
 
-    private void init(Context context) {
+    private void init(Context context, AttributeSet attrs) {
         setBackground(GeneralUtil.getDrawable(context, R.drawable.profile_icon_circle));
-        setTextColor(context.getResources().getColor(R.color.dark_grey));
-        setTextSize(18);
+        float textSize = 18;
+        setTextSize(textSize);
         setTypeface(getTypeface(), Typeface.BOLD);
         setGravity(Gravity.CENTER);
     }

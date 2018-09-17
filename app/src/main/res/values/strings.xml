@@ -1,5 +1,24 @@
 <resources>
     <string name="app_name">My Appointments</string>
 
+    <string name="today">Today</string>
+    <string name="tomorrow">Tomorrow</string>
+    <string name="subject">Subject</string>
+    <string name="location">Location</string>
+    <string name="type">Type</string>
+    <string name="start">Start</string>
+    <string name="end">End</string>
+    <string name="account">Account</string>
+    <string name="opportunity">Opportunity</string>
+    <string name="lead">Lead</string>
+    <string name="primary_contact">Primary Contact</string>
+    <string name="description">Description</string>
+    <string name="invitees">Invitees</string>
+
+    <string name="appointments">Appointments</string>
+    <string name="add_invitee">Add Invitee</string>
+
     <string name="error_reading_data_from_file">Unable to read appointments.</string>
+    <string name="error_reading_contacts_from_file">Unable to read invitees.</string>
+    <string name="phone_call_permission_denied">Phone call permission denied.</string>
 </resources>

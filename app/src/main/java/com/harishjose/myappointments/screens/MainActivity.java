@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import com.harishjose.myappointments.R;
 import com.harishjose.myappointments.constants.FragmentTags;
 import com.harishjose.myappointments.databinding.ActivityMainBinding;
+import com.harishjose.myappointments.screens.addInvitee.AddInviteeFragment;
 import com.harishjose.myappointments.screens.appointmentDetail.AppointmentDetailsFragment;
 import com.harishjose.myappointments.screens.appointmentList.AppointmentListFragment;
 import com.harishjose.myappointments.screens.common.BaseActivity;
@@ -34,15 +35,18 @@ public class MainActivity extends BaseActivity {
      * @param tag
      */
     public void loadFragment(FragmentTags tag, Bundle bundle) {
-        //set background colour for fragment container
         boolean isBackStackRequired = false;
         Fragment fragment = null;
         switch (tag) {
             case APPOINTMENTS_LIST_FRAGMENT:
                 fragment = new AppointmentListFragment();
                 break;
-            case AAPPOINTMENT_DETAILS_FRAGMENT:
+            case APPOINTMENT_DETAILS_FRAGMENT:
                 fragment = new AppointmentDetailsFragment();
+                isBackStackRequired = true;
+                break;
+            case ADD_INVITEE_FRAGMENT:
+                fragment = new AddInviteeFragment();
                 isBackStackRequired = true;
                 break;
 

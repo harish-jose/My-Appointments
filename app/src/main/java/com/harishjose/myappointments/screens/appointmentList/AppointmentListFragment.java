@@ -1,5 +1,7 @@
 package com.harishjose.myappointments.screens.appointmentList;
 
+import android.app.ActivityOptions;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.view.LayoutInflater;
@@ -7,10 +9,15 @@ import android.view.View;
 import android.view.ViewGroup;
 
 
+import com.harishjose.myappointments.R;
 import com.harishjose.myappointments.callbacks.OnClickPositionCallback;
+import com.harishjose.myappointments.constants.AppConstants;
+import com.harishjose.myappointments.constants.FragmentTags;
 import com.harishjose.myappointments.databinding.FragmentAppointmentListBinding;
 import com.harishjose.myappointments.models.Appointment;
+import com.harishjose.myappointments.screens.MainActivity;
 import com.harishjose.myappointments.screens.common.BaseFragment;
+import com.harishjose.myappointments.screens.profilePopup.ProfileActivity;
 import com.harishjose.myappointments.utils.GeneralUtil;
 
 import java.util.ArrayList;
@@ -36,6 +43,7 @@ public class AppointmentListFragment extends BaseFragment implements Appointment
 
     @Override
     protected void init() {
+        binding.actionBar.tvToolbarTitle.setText(GeneralUtil.getString(R.string.appointments));
         presenter = new AppointmentListPresenter();
         appointmentArrayList = new ArrayList<>();
         presenter.setView(this);
@@ -43,7 +51,12 @@ public class AppointmentListFragment extends BaseFragment implements Appointment
             adapter = new AppointmentListAdapter(appointmentArrayList, new OnClickPositionCallback() {
                 @Override
                 public void onClick(int position) {
-
+                    navigateToDetailsScreen(appointmentArrayList.get(position));
+                }
+            }, new AppointmentListAdapter.OnProfileIconClickCallback() {
+                @Override
+                public void onClick(int position, View view) {
+                    openProfilePopup(appointmentArrayList.get(position), view);
                 }
             });
         }
@@ -76,5 +89,24 @@ public class AppointmentListFragment extends BaseFragment implements Appointment
     public void onStop() {
         super.onStop();
         presenter.onStop();
+    }
+
+    /**
+     * Show the popup with Call, sms, and email actions
+     * @param appointment
+     * @param sharedView
+     */
+    private void openProfilePopup(Appointment appointment ,View sharedView) {
+        Intent intent = new Intent(new Intent(getActivity(), ProfileActivity.class));
+        intent.putExtra(AppConstants.APPOINTMENT, appointment);
+        ActivityOptions options = ActivityOptions
+                .makeSceneTransitionAnimation(getActivity(), sharedView, "profile_transition");
+        startActivity(intent, options.toBundle());
+    }
+
+    private void navigateToDetailsScreen(Appointment appointment) {
+        Bundle bundle = new Bundle();
+        bundle.putSerializable(AppConstants.APPOINTMENT, appointment);
+        ((MainActivity)getActivity()).loadFragment(FragmentTags.APPOINTMENT_DETAILS_FRAGMENT, bundle);
     }
 }
