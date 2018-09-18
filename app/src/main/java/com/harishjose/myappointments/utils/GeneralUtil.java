@@ -19,8 +19,12 @@ import android.widget.Toast;
 import com.harishjose.myappointments.constants.AppConstants;
 import com.harishjose.myappointments.controller.MyAppointmentsApplication;
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -258,6 +262,53 @@ public final class GeneralUtil {
         return json;
     }
 
+    /**
+     * Write data to file in internal storage
+     * @param data
+     * @param fileName
+     */
+    public static void writeToFile(String data, String fileName) {
+        try {
+            OutputStreamWriter outputStreamWriter = new OutputStreamWriter(MyAppointmentsApplication.getInstance().openFileOutput(fileName, Context.MODE_PRIVATE));
+            outputStreamWriter.write(data);
+            outputStreamWriter.close();
+        }
+        catch (IOException e) {
+            Log.e("Exception", "File write failed: " + e.toString());
+        }
+    }
+
+    /**
+     * Read data from file in internal storage
+     * @param fileName
+     * @return data
+     */
+    public static String readFromFile(String fileName) {
+
+        String data = "";
+        try {
+            InputStream inputStream = MyAppointmentsApplication.getInstance().openFileInput(fileName);
+
+            if ( inputStream != null ) {
+                InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
+                BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+                String receiveString = "";
+                StringBuilder stringBuilder = new StringBuilder();
+                while ( (receiveString = bufferedReader.readLine()) != null ) {
+                    stringBuilder.append(receiveString);
+                }
+
+                inputStream.close();
+                data = stringBuilder.toString();
+            }
+        } catch (FileNotFoundException e) {
+            Log.e("GeneralUtils", "File not found: " + e.toString());
+        } catch (IOException e) {
+            Log.e("GeneralUtils", "Can not read file: " + e.toString());
+        }
+        return data;
+    }
+
     public static Calendar parseDateTimeToCalendar(String dateTime) {
         Calendar calendar = Calendar.getInstance();
         try {
@@ -275,6 +326,11 @@ public final class GeneralUtil {
             e.printStackTrace();
         }
         return null;
+    }
+
+    public static String formatDateTime(long millis, String reqFormat) {
+        SimpleDateFormat reqSdf = new SimpleDateFormat(reqFormat);
+        return reqSdf.format(new Date(millis));
     }
 
     public static String formatDateTime(String dateTime, String reqFormat) {

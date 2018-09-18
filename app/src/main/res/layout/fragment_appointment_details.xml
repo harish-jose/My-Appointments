@@ -8,13 +8,15 @@
         <include
             android:id="@+id/action_bar"
             layout="@layout/action_bar"/>
-        <ScrollView
+        <android.support.v4.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_above="@+id/lyt_save_button"
             android:layout_below="@+id/action_bar">
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:animateLayoutChanges="true">
                 <LinearLayout
                     android:id="@+id/lyt_field"
                     android:layout_width="match_parent"
@@ -45,22 +47,29 @@
                         custom:field_hint="@string/type"
                         custom:field_ime_option="forward"
                         custom:enabled="false"
-                        android:nextFocusForward="@+id/et_start"/>
+                        custom:field_next="@+id/et_account"
+                        android:nextFocusForward="@+id/et_account"/>
                     <com.harishjose.myappointments.components.CustomEditText
                         android:id="@+id/et_start"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        custom:isPicker="true"
                         custom:field_hint="@string/start"
                         custom:field_ime_option="forward"
+                        custom:field_required="true"
                         custom:enabled="false"
-                        android:nextFocusForward="@+id/et_end"/>
+                        custom:focusable="false"
+                        android:nextFocusForward="@+id/et_account"/>
                     <com.harishjose.myappointments.components.CustomEditText
                         android:id="@+id/et_end"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        custom:isPicker="true"
                         custom:field_hint="@string/end"
                         custom:field_ime_option="forward"
+                        custom:field_required="true"
                         custom:enabled="false"
+                        custom:focusable="false"
                         android:nextFocusForward="@+id/et_account"/>
                     <com.harishjose.myappointments.components.CustomEditText
                         android:id="@+id/et_account"
@@ -132,10 +141,39 @@
                     android:id="@+id/list_invitee"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:nestedScrollingEnabled="false"
                     android:layout_below="@+id/lyt_invitee_header"
                     tools:listitem="@layout/adapter_invitee_item"/>
             </RelativeLayout>
-        </ScrollView>
+        </android.support.v4.widget.NestedScrollView>
+        <LinearLayout
+            android:id="@+id/lyt_save_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:padding="@dimen/ten_dp"
+            android:layout_alignParentBottom="true"
+            android:weightSum="2"
+            android:orientation="horizontal">
+            <Button
+                android:id="@+id/btn_cancel"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/two_dp"
+                android:background="@color/lightPrimary"
+                android:textColor="@color/colorPrimary"
+                android:layout_weight="1"
+                android:text="@string/cancel"/>
+            <Button
+                android:id="@+id/btn_save"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/two_dp"
+                android:background="@color/colorPrimary"
+                android:textColor="@color/white"
+                android:layout_weight="1"
+                android:text="@string/save"/>
+        </LinearLayout>
     </RelativeLayout>
 
 </layout>

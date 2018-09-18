@@ -4,6 +4,10 @@ package com.harishjose.myappointments.constants;
  * Created by harish.jose on 16-09-2018.
  */
 public class AppConstants {
+
+    public static final String APPOINTMENTS_DATA_FILE_NAME = "appointmentsData.json";
+    public static final String CONTACTS_DATA_FILE_NAME = "contactsData.json";
+
     public static final String DATETIMEFORMAT = "yyyy-MM-dd'T'HH:mm:ssZZZZZ";
     public static final String MMM_DD_YYYY = "MMM dd, yyyy";
     public static final String hh_mm = "hh:mm";
@@ -13,5 +17,8 @@ public class AppConstants {
 
     public static final String APPOINTMENT = "appointment";
     public static final String CONTACT = "contact";
+
+    public static final String TITLE = "title";
+    public static final String BODY = "body";
 
 }

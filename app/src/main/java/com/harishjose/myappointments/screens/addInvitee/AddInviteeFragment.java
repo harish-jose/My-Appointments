@@ -65,6 +65,7 @@ public class AddInviteeFragment extends BaseFragment implements AddInviteeContra
                 public void onClick(int position) {
                     appointment.getInvitees().add(contactArrayList.remove(position));
                     adapter.notifyDataSetChanged();
+                    presenter.updateAppointmentData(appointment);
                 }
             }, new InviteeListAdapter.OnProfileIconClickCallback() {
                 @Override
@@ -100,14 +101,22 @@ public class AddInviteeFragment extends BaseFragment implements AddInviteeContra
     @Override
     public void setContactList(ArrayList<Contact> dataList) {
         this.contactArrayList.clear();
-        this.contactArrayList.addAll(dataList);
-        this.contactArrayList.removeAll(appointment.getInvitees());
+        if(dataList != null) {
+            this.contactArrayList.addAll(dataList);
+            this.contactArrayList.removeAll(appointment.getInvitees());
+        }
+        if(this.contactArrayList.size() == 0) {
+            binding.tvNoData.setVisibility(View.VISIBLE);
+        } else {
+            binding.tvNoData.setVisibility(View.GONE);
+        }
         adapter.notifyDataSetChanged();
     }
 
     @Override
     public void showToast(String message) {
         GeneralUtil.showLongToast(getActivity(), message);
+        getActivity().onBackPressed();
     }
 
 }

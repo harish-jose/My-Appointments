@@ -28,9 +28,10 @@
                         </option>
                         <option name="values">
                           <map>
-                            <entry key="outputName" value="ic_cancel" />
+                            <entry key="assetSourceType" value="FILE" />
+                            <entry key="outputName" value="ic_calendar_clock" />
                             <entry key="overrideSize" value="true" />
-                            <entry key="sourceFile" value="C:\Users\harish.jose" />
+                            <entry key="sourceFile" value="C:\Users\harish.jose\Downloads\calendar-clock.svg" />
                           </map>
                         </option>
                       </PersistentState>

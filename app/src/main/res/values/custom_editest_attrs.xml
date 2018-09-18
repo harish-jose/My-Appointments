@@ -13,7 +13,9 @@
             <enum name="done" value="0" />
             <enum name="forward" value="1" />
         </attr>
-        <attr name="filed_next" format="reference"/>
+        <attr name="isPicker" format="boolean"/>
+        <attr name="field_next" format="reference"/>
         <attr name="enabled" format="boolean"/>
+        <attr name="focusable" format="boolean"/>
     </declare-styleable>
 </resources>

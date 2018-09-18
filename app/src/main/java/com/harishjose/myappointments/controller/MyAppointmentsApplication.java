@@ -2,6 +2,8 @@ package com.harishjose.myappointments.controller;
 
 import android.app.Application;
 
+import com.evernote.android.job.JobManager;
+
 
 /**
  * Created by harish.jose on 14-09-2018.
@@ -12,6 +14,7 @@ public class MyAppointmentsApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+        JobManager.create(this).addJobCreator(new JobCreator());
         sInstance = this;
     }
 

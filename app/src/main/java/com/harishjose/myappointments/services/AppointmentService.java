@@ -14,4 +14,10 @@ public interface AppointmentService {
      * @param callback callback on success or failure.
      */
     void readAppointments(DataCallback<ArrayList<Appointment>, String> callback);
+
+    /**
+     * Function to update appointments list to local json file.
+     * @param callback callback on success or failure.
+     */
+    void updateAppointments(ArrayList<Appointment> appointmentsList, DataCallback<String, String> callback);
 }

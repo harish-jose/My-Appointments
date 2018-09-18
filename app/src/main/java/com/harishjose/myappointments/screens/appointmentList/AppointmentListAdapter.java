@@ -17,6 +17,7 @@ import com.harishjose.myappointments.utils.GeneralUtil;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 
 
 /**
@@ -27,6 +28,7 @@ public class AppointmentListAdapter extends RecyclerView.Adapter<AppointmentList
     private ArrayList<Appointment> itemArrayList;
     private OnClickPositionCallback callback;
     private OnProfileIconClickCallback profileClickCallback;
+    private int selectedItemPosition = -1;
 
     public AppointmentListAdapter(ArrayList<Appointment> dataList, OnClickPositionCallback positionCallback, OnProfileIconClickCallback profileClickCallback){
         this.itemArrayList = dataList;
@@ -73,8 +75,7 @@ public class AppointmentListAdapter extends RecyclerView.Adapter<AppointmentList
         holder.tvProfileIcon.setText(GeneralUtil.getInitials(itemArrayList.get(position).getOwner()));
         holder.tvAccountName.setText(itemArrayList.get(position).getAccountName());
 
-        if(GeneralUtil.isTimeSlotNow(startDateCal.getTime(), endDateCal.getTime()) ||
-                (position > 0 && !itemArrayList.get(position-1).isSelected() && GeneralUtil.isUpcomingTime(startDateCal.getTime()))) {
+        if(position == selectedItemPosition) {
             holder.tvLocation.setVisibility(View.VISIBLE);
             holder.tvTimeSlot.setVisibility(View.VISIBLE);
             holder.lytOwnerInfo.setBackgroundColor(GeneralUtil.getColor(R.color.white));
@@ -91,6 +92,7 @@ public class AppointmentListAdapter extends RecyclerView.Adapter<AppointmentList
             holder.lytTime.setBackgroundColor(GeneralUtil.getColor(R.color.white));
             holder.tvTime.setTextColor(GeneralUtil.getColor(R.color.primaryText));
             holder.tvAmPm.setTextColor(GeneralUtil.getColor(R.color.secondaryText));
+            itemArrayList.get(position).setSelected(false);
         }
 
         holder.tvProfileIcon.setOnClickListener(new View.OnClickListener() {
@@ -111,6 +113,34 @@ public class AppointmentListAdapter extends RecyclerView.Adapter<AppointmentList
     @Override
     public int getItemCount() {
         return itemArrayList != null ? itemArrayList.size() : 0;
+    }
+
+    public void notifyAdapterDataSetChanged() {
+        setSelectedItemPosition();
+        notifyDataSetChanged();
+    }
+
+    public void setSelectedItemPosition() {
+        if(itemArrayList != null) {
+            for (int i=0; i<itemArrayList.size(); i++) {
+                Date startDate = GeneralUtil.parseDateTimeToDate(itemArrayList.get(i).getActivityStartDate());
+                Date endDate = GeneralUtil.parseDateTimeToDate(itemArrayList.get(i).getActivityEndDate());
+                if(GeneralUtil.isTimeSlotNow(startDate, endDate) ||
+                        (i == 0 && GeneralUtil.isUpcomingTime(startDate)) ||
+                        (i > 0 && !itemArrayList.get(i-1).isSelected() && GeneralUtil.isUpcomingTime(startDate))) {
+                    selectedItemPosition = i;
+                    return;
+                }
+            }
+            selectedItemPosition = -1;
+        }
+    }
+
+    public int getSelectedItemPosition() {
+        if(selectedItemPosition == -1) {
+            return 0;
+        }
+        return selectedItemPosition;
     }
 
     class AppointmentItemHolder extends RecyclerView.ViewHolder{

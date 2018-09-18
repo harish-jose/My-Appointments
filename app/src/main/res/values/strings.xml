@@ -14,11 +14,22 @@
     <string name="primary_contact">Primary Contact</string>
     <string name="description">Description</string>
     <string name="invitees">Invitees</string>
+    <string name="save">Save</string>
+    <string name="cancel">Cancel</string>
 
     <string name="appointments">Appointments</string>
     <string name="add_invitee">Add Invitee</string>
 
+    <string name="all_contacts_are_invited">All contacts are invited.</string>
+
     <string name="error_reading_data_from_file">Unable to read appointments.</string>
     <string name="error_reading_contacts_from_file">Unable to read invitees.</string>
     <string name="phone_call_permission_denied">Phone call permission denied.</string>
+    <string name="invitee_added_successfully">Invitee added successfully.</string>
+    <string name="invitee_add_failed">Invitee add failed.</string>
+    <string name="appointment_updated_successfully">Appointment updated successfully.</string>
+    <string name="appointment_update_failed">Appointment update failed.</string>
+    <string name="error_please_fill_subject">Please fill subject.</string>
+    <string name="error_please_select_start_date_time">Please starting time.</string>
+    <string name="error_please_select_end_date_time">Please ending time.</string>
 </resources>

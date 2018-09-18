@@ -12,9 +12,12 @@ import java.util.ArrayList;
 class AppointmentDetailsContract {
     public interface AppointmentDetailsView{
         void setAppointment(Appointment data);
+        void toggleEditMode(boolean enable);
         void showToast(String message);
     }
 
     public interface AppointmentDetailsPresenter extends BasePresenter<AppointmentDetailsView> {
+        void updateAppointmentData(Appointment appointment);
+
     }
 }

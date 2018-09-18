@@ -10,6 +10,7 @@ import android.text.InputType;
 import android.text.TextWatcher;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -24,6 +25,7 @@ public class CustomEditText extends LinearLayout {
     private Context context;
     private TextInputLayout inputLayout;
     private EditText etField;
+    private View overlayView;
     private ImageView ivErrorIndication;
     private static int id = 1000;
     boolean isRequired;
@@ -47,6 +49,9 @@ public class CustomEditText extends LinearLayout {
         int inputType = a.getInt(R.styleable.Custom_EditText_Options_field_input_type,0);
         int fieldMaxLength = a.getInt(R.styleable.Custom_EditText_Options_field_max_length, -1);
         boolean isEnabled = a.getBoolean(R.styleable.Custom_EditText_Options_enabled, true);
+        boolean isPicker = a.getBoolean(R.styleable.Custom_EditText_Options_isPicker, false);
+        boolean isfocusable = a.getBoolean(R.styleable.Custom_EditText_Options_focusable, true);
+        int nextfocus = a.getResourceId(R.styleable.Custom_EditText_Options_field_next, 0);
         a.recycle();
         setOrientation(LinearLayout.HORIZONTAL);
         //setBackgroundColor(Color.WHITE);
@@ -59,6 +64,7 @@ public class CustomEditText extends LinearLayout {
         etField= findViewById(R.id.etField);
         etField.setId(getId() + id);
         ivErrorIndication = findViewById(R.id.ivErrorIndication);
+        overlayView = findViewById(R.id.overlay);
 
         //initializing values
         inputLayout.setHint(fieldHint);
@@ -70,6 +76,15 @@ public class CustomEditText extends LinearLayout {
         }
         etField.setSelection(etField.getText().length());
         ivErrorIndication.setVisibility(GONE);
+        if(isPicker) {
+            overlayView.setVisibility(VISIBLE);
+            overlayView.setOnClickListener(new OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    CustomEditText.this.performClick();
+                }
+            });
+        }
 
         //ime option settings
         switch (imeOption){
@@ -79,6 +94,14 @@ public class CustomEditText extends LinearLayout {
             default:
                 etField.setImeOptions(EditorInfo.IME_ACTION_DONE);
                 break;
+        }
+
+        if(!isfocusable) {
+            etField.setFocusable(false);
+        }
+
+        if(nextfocus != 0) {
+            etField.setNextFocusForwardId(nextfocus);
         }
 
         //input type settings

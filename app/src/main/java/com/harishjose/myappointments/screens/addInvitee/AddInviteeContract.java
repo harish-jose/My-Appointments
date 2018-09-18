@@ -18,5 +18,6 @@ class AddInviteeContract {
 
     public interface AddInviteePresenter extends BasePresenter<AddInviteeView> {
         void fetchContactList(Appointment appointment);
+        void updateAppointmentData(Appointment appointment);
     }
 }

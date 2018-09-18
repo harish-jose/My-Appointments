@@ -3,7 +3,10 @@ package com.harishjose.myappointments.screens.appointmentList;
 import android.app.ActivityOptions;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.LinearSmoothScroller;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,6 +35,7 @@ public class AppointmentListFragment extends BaseFragment implements Appointment
     private AppointmentListContract.AppointmentListPresenter presenter;
     private AppointmentListAdapter adapter;
     private ArrayList<Appointment> appointmentArrayList;
+    private RecyclerView.SmoothScroller smoothScroller;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -45,21 +49,24 @@ public class AppointmentListFragment extends BaseFragment implements Appointment
     protected void init() {
         binding.actionBar.tvToolbarTitle.setText(GeneralUtil.getString(R.string.appointments));
         presenter = new AppointmentListPresenter();
+        smoothScroller = new LinearSmoothScroller(getActivity()) {
+            @Override protected int getVerticalSnapPreference() {
+                return LinearSmoothScroller.SNAP_TO_START;
+            }
+        };
         appointmentArrayList = new ArrayList<>();
         presenter.setView(this);
-        if(adapter == null) {
-            adapter = new AppointmentListAdapter(appointmentArrayList, new OnClickPositionCallback() {
-                @Override
-                public void onClick(int position) {
-                    navigateToDetailsScreen(appointmentArrayList.get(position));
-                }
-            }, new AppointmentListAdapter.OnProfileIconClickCallback() {
-                @Override
-                public void onClick(int position, View view) {
-                    openProfilePopup(appointmentArrayList.get(position), view);
-                }
-            });
-        }
+        adapter = new AppointmentListAdapter(appointmentArrayList, new OnClickPositionCallback() {
+            @Override
+            public void onClick(int position) {
+                navigateToDetailsScreen(appointmentArrayList.get(position));
+            }
+        }, new AppointmentListAdapter.OnProfileIconClickCallback() {
+            @Override
+            public void onClick(int position, View view) {
+                openProfilePopup(appointmentArrayList.get(position), view);
+            }
+        });
         binding.listAppointments.setLayoutManager(new LinearLayoutManager(getActivity()));
         binding.listAppointments.setAdapter(adapter);
         presenter.fetchAppointmentList();
@@ -75,7 +82,14 @@ public class AppointmentListFragment extends BaseFragment implements Appointment
         if(dataList != null) {
             appointmentArrayList.clear();
             appointmentArrayList.addAll(dataList);
-            adapter.notifyDataSetChanged();
+            adapter.notifyAdapterDataSetChanged();
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    smoothScroller.setTargetPosition(adapter.getSelectedItemPosition());
+                    binding.listAppointments.getLayoutManager().startSmoothScroll(smoothScroller);
+                }
+            }, 300);
         }
     }
 

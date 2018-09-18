@@ -13,7 +13,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".screens.MainActivity"
+        <activity android:name=".screens.SplashActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -21,9 +21,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".screens.MainActivity"
+            android:screenOrientation="portrait"/>
         <activity android:name=".screens.profilePopup.ProfileActivity"
             android:theme="@style/AppTheme.Transparent"
             android:screenOrientation="portrait"/>
+        <service android:name=".services.NotificationAlarmReceiverService"
+            android:exported="false"/>
     </application>
 
 </manifest>
