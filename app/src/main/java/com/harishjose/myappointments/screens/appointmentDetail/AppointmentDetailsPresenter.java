@@ -6,6 +6,7 @@ import com.harishjose.myappointments.callbacks.DataCallback;
 import com.harishjose.myappointments.models.Appointment;
 import com.harishjose.myappointments.services.AppointmentService;
 import com.harishjose.myappointments.services.AppointmentServiceImpl;
+import com.harishjose.myappointments.services.NotificationJob;
 import com.harishjose.myappointments.utils.GeneralUtil;
 
 import java.util.ArrayList;
@@ -45,6 +46,7 @@ public class AppointmentDetailsPresenter implements AppointmentDetailsContract.A
                     appointmentService.updateAppointments(successResponse, new DataCallback<String, String>() {
                         @Override
                         public void onSuccess(String successResponse) {
+                            NotificationJob.scheduleJob(appointment);
                             if(mView != null) {
                                 mView.toggleEditMode(false);
                                 mView.showToast(GeneralUtil.getString(R.string.appointment_updated_successfully));

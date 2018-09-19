@@ -1,12 +1,10 @@
 package com.harishjose.myappointments.screens;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
-import android.util.Log;
 
 import com.harishjose.myappointments.R;
 import com.harishjose.myappointments.callbacks.DataCallback;
@@ -15,12 +13,10 @@ import com.harishjose.myappointments.models.Appointment;
 import com.harishjose.myappointments.services.AppointmentService;
 import com.harishjose.myappointments.services.AppointmentServiceImpl;
 import com.harishjose.myappointments.services.NotificationJob;
-import com.harishjose.myappointments.services.NotificationService;
+import com.harishjose.myappointments.services.RssPollingJob;
 import com.harishjose.myappointments.utils.GeneralUtil;
 import com.harishjose.myappointments.utils.PreferenceUtil;
 
-import java.io.IOException;
-import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 
 /**
@@ -84,6 +80,7 @@ public class SplashActivity extends Activity {
 
             }
         });
+        RssPollingJob.scheduleJob();
     }
 
     private void navigateToHome() {

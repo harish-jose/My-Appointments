@@ -30,7 +30,7 @@ public class ProfileIconTextView extends AppCompatTextView {
     }
 
     private void init(Context context, AttributeSet attrs) {
-        setBackground(GeneralUtil.getDrawable(context, R.drawable.profile_icon_circle));
+        setBackground(GeneralUtil.getDrawable(R.drawable.profile_icon_circle));
         float textSize = 18;
         setTextSize(textSize);
         setTypeface(getTypeface(), Typeface.BOLD);

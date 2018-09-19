@@ -12,6 +12,8 @@ public class PreferenceUtil {
     public static final class PreferenceKeys{
         public static final String APP_NAME = "app_name";
         public static final String IS_INITIALIZED = "is_initialized";
+        public static final String OLD_FEED_GUID = "old_feed_guid";
+
     }
     private final String PREFERENCE_NAME = "com.harishjose.myappointments";
     private Context context;

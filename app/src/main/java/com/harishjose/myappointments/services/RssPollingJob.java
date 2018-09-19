@@ -10,6 +10,8 @@ import android.media.RingtoneManager;
 import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.v4.app.NotificationCompat;
+import android.util.Log;
+import android.util.Xml;
 
 import com.evernote.android.job.Job;
 import com.evernote.android.job.JobRequest;
@@ -18,23 +20,36 @@ import com.harishjose.myappointments.R;
 import com.harishjose.myappointments.constants.AppConstants;
 import com.harishjose.myappointments.controller.MyAppointmentsApplication;
 import com.harishjose.myappointments.models.Appointment;
+import com.harishjose.myappointments.models.RssFeed;
 import com.harishjose.myappointments.screens.SplashActivity;
 import com.harishjose.myappointments.utils.GeneralUtil;
 
+import org.xmlpull.v1.XmlPullParser;
+import org.xmlpull.v1.XmlPullParserException;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.URL;
 import java.util.Calendar;
 
 /**
  * Created by harish.jose on 19-09-2018.
  */
-public class NotificationJob extends Job {
+public class RssPollingJob extends Job {
 
-    public static final String TAG = "Notification_job";
+    public static final String TAG = "Rss_job";
 
     @NonNull
     @Override
     protected Result onRunJob(@NonNull Params params) {
-        generateNotification(params.getExtras().getString(AppConstants.TITLE, "Your Appointment Within 5 Minutes"),
-                params.getExtras().getString(AppConstants.BODY, ""), params.getTag());
+        RssFeedPollingTask task = new RssFeedPollingTask(MyAppointmentsApplication.getInstance(), new RssFeedPollingTask.OnRssFeedCallback() {
+            @Override
+            public void onNewFeed(RssFeed rssFeed) {
+                generateNotification(rssFeed.getChannelTitle(), rssFeed.getMessage(), rssFeed.getGuid());
+            }
+        });
+        Thread t = new Thread(task);
+        t.start();
         return Result.SUCCESS;
     }
 
@@ -44,7 +59,7 @@ public class NotificationJob extends Job {
      * @param body
      * @param id
      */
-    private void generateNotification(String title, String body, String id) {
+    public static void generateNotification(String title, String body, String id) {
 
         PendingIntent pendingIntent = PendingIntent.getActivity
                 (MyAppointmentsApplication.getInstance(), 5005, new Intent(MyAppointmentsApplication.getInstance(), SplashActivity.class)
@@ -85,35 +100,12 @@ public class NotificationJob extends Job {
     }
 
     /**
-     * To set the alarm at specific time
-     * @param appointment
+     * To set the repeating alarm for RSS Feeds
      */
-    public static void scheduleJob(Appointment appointment) {
-        Calendar eventTime = GeneralUtil.parseDateTimeToCalendar(appointment.getActivityStartDate());
-
-        if(!GeneralUtil.isUpcomingTime(eventTime.getTime())){
-            return;
-        }
-
-        PersistableBundleCompat extras = new PersistableBundleCompat();
-        extras.putString(AppConstants.TITLE, appointment.getSubject());
-        String notificationBody = GeneralUtil.formatDateTime(appointment.getActivityStartDate(), AppConstants.hh_mm_am_pm) +
-                " - " + GeneralUtil.formatDateTime(appointment.getActivityEndDate(), AppConstants.hh_mm_am_pm) +
-                " | " + appointment.getLocation();
-        extras.putString(AppConstants.BODY, notificationBody);
-
-        int requestId = (int) (appointment.getAppointmentId()%10000);
-
-        long triggerTime = eventTime.getTimeInMillis() - System.currentTimeMillis() - 300000L;
-        try {
-            int jobId = new JobRequest.Builder(TAG + requestId)
-                    .setExact(triggerTime)
-                    .setExtras(extras)
-                    .setUpdateCurrent(true)
-                    .build()
-                    .schedule();
-        } catch (Exception e) {
-
-        }
+    public static void scheduleJob() {
+        int jobId = new JobRequest.Builder(TAG)
+                .setPeriodic(JobRequest.MIN_INTERVAL)  // 15 min interval
+                .build()
+                .schedule();
     }
 }

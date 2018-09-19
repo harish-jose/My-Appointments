@@ -127,11 +127,11 @@ public final class GeneralUtil {
      * @param drawableResourceId the drawable resource id
      * @return the drawable
      */
-    public static Drawable getDrawable(Context context,int drawableResourceId) {
+    public static Drawable getDrawable(int drawableResourceId) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            return context.getResources().getDrawable(drawableResourceId, null);
+            return MyAppointmentsApplication.getInstance().getResources().getDrawable(drawableResourceId, null);
         }
-        return context.getResources().getDrawable(drawableResourceId);
+        return MyAppointmentsApplication.getInstance().getResources().getDrawable(drawableResourceId);
     }
     /**
      * Function which hide keyboard
@@ -384,5 +384,11 @@ public final class GeneralUtil {
         Date now = new Date();
         return startDate.after(now);
     }
+
+    public static boolean isPastTime(Date endDate) {
+        Date now = new Date();
+        return endDate.before(now);
+    }
+
 
 }

@@ -10,6 +10,8 @@ import com.harishjose.myappointments.utils.GeneralUtil;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.Iterator;
+import java.util.List;
 
 /**
  * Created by harish.jose on 14-09-2018.
@@ -45,8 +47,16 @@ public class AppointmentListPresenter implements AppointmentListContract.Appoint
                             return GeneralUtil.parseDateTimeToDate(o1.getActivityStartDate()).compareTo(GeneralUtil.parseDateTimeToDate(o2.getActivityStartDate()));
                         }
                     });
+                    Iterator<Appointment> it = successResponse.iterator();
+                    while (it.hasNext()) {
+                        Appointment item = it.next();
+                        if(GeneralUtil.isPastTime(GeneralUtil.parseDateTimeToDate(item.getActivityEndDate()))) {
+                            it.remove();
+                        }
+                    }
                     mView.setAppointmentList(successResponse);
                 }
+
             }
 
             @Override

@@ -82,14 +82,7 @@ public class AppointmentListFragment extends BaseFragment implements Appointment
         if(dataList != null) {
             appointmentArrayList.clear();
             appointmentArrayList.addAll(dataList);
-            adapter.notifyAdapterDataSetChanged();
-            new Handler().postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    smoothScroller.setTargetPosition(adapter.getSelectedItemPosition());
-                    binding.listAppointments.getLayoutManager().startSmoothScroll(smoothScroller);
-                }
-            }, 300);
+            adapter.notifyDataSetChanged();
         }
     }
 
