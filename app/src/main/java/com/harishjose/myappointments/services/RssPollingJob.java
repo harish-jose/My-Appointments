@@ -72,7 +72,7 @@ public class RssPollingJob extends Job {
                 .setContentTitle(title)
                 .setColor(GeneralUtil.getColor(R.color.colorAccent))
                 .setContentText(body)
-                .setStyle(new NotificationCompat.BigTextStyle().bigText(body))
+                .setStyle(new NotificationCompat.BigTextStyle().setBigContentTitle(title).bigText(body).setSummaryText("Feeds"))
                 .setAutoCancel(true)
                 .setVibrate(new long[] { 100, 500, 100, 500 })
                 .setSound(alarmSound)

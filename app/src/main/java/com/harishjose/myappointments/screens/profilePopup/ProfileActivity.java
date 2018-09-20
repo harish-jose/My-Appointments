@@ -120,7 +120,11 @@ public class ProfileActivity extends BaseActivity implements View.OnClickListene
         {
             if(grantResults[0] == PackageManager.PERMISSION_GRANTED)
             {
-                makePhoneCall(appointment.getOwnerContactNumber());
+                if(appointment != null) {
+                    makePhoneCall(appointment.getOwnerContactNumber());
+                } else if(contact != null) {
+                    makePhoneCall(contact.getPhoneNumber());
+                }
             } else {
                 GeneralUtil.showLongToast(this, GeneralUtil.getString(R.string.phone_call_permission_denied));
             }

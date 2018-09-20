@@ -65,10 +65,12 @@ public class RssFeedPollingTask implements Runnable {
             xmlPullParser.setInput(inputStream, null);
 
             xmlPullParser.nextTag();
-            while (xmlPullParser.next() != XmlPullParser.END_DOCUMENT) {
+            int event = xmlPullParser.next();
+            while (event != XmlPullParser.END_DOCUMENT) {
                 int eventType = xmlPullParser.getEventType();
 
                 String name = xmlPullParser.getName();
+                event = xmlPullParser.next();
                 if(name == null)
                     continue;
 
@@ -86,11 +88,13 @@ public class RssFeedPollingTask implements Runnable {
                     }
                 }
 
-                Log.d("MyXmlParser", "Parsing name ==> " + name);
+                Log.d("XmlParser", "Parsing name ==> " + name);
                 String result = "";
-                if (xmlPullParser.next() == XmlPullParser.TEXT) {
+                if (event == XmlPullParser.TEXT) {
                     result = xmlPullParser.getText();
-                    xmlPullParser.nextTag();
+                    event = xmlPullParser.next();
+                } else {
+                    continue;
                 }
 
                 if (name.equalsIgnoreCase("title")) {

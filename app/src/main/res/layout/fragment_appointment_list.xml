@@ -15,6 +15,7 @@
                 android:id="@+id/list_appointments"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:paddingBottom="@dimen/ten_dp"
                 tools:listitem="@layout/adapter_appointment_item"/>
         </LinearLayout>
 

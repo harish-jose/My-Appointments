@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginStart="@dimen/five_dp"
+    android:layout_marginEnd="@dimen/five_dp"
     android:layout_marginTop="@dimen/five_dp">
 
     <LinearLayout
@@ -43,7 +44,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/five_dp"
         android:layout_below="@+id/lyt_header"
-        app:cardCornerRadius="@dimen/two_dp">
+        app:cardCornerRadius="@dimen/five_dp">
         <RelativeLayout
             android:id="@+id/lyt_item"
             android:layout_width="match_parent"

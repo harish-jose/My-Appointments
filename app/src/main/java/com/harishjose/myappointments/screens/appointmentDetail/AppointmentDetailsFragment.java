@@ -217,6 +217,7 @@ public class AppointmentDetailsFragment extends BaseFragment implements Appointm
         appointment.setOpportunityName(binding.etOpportunity.getText());
         appointment.setLeadName(binding.etLead.getText());
         appointment.setPrimaryContactName(binding.etPrimaryContact.getText());
+        appointment.setDescription(binding.etDescription.getText());
         presenter.updateAppointmentData(appointment);
     }
 
